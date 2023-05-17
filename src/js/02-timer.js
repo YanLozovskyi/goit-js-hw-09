@@ -32,7 +32,7 @@ flatpickr(dataInputEl, {
 function statusOfSelectedDate() {
   if (selectedDate - new Date() < 0) {
     handleError('Please choose a date in the future');
-    buttonStartEl.setAttribute('disabled', '');
+    disableStartButton();
     return;
   }
   preStartSettings();
@@ -44,6 +44,14 @@ function handleError(errorMessage) {
   });
 }
 
+function disableStartButton() {
+  buttonStartEl.setAttribute('disabled', '');
+}
+
+function enableStartButton() {
+  buttonStartEl.removeAttribute('disabled');
+}
+
 function preStartSettings() {
   Notiflix.Notify.info(
     'The date is correct, you can start the timer by pressing the "Start" button',
@@ -52,7 +60,7 @@ function preStartSettings() {
     }
   );
   buttonStartEl.addEventListener('click', onStartButtonClick);
-  buttonStartEl.removeAttribute('disabled');
+  enableStartButton();
 }
 
 function onStartButtonClick() {
@@ -85,7 +93,7 @@ function onResetButtonClick() {
 
     dataInputEl.removeAttribute('disabled');
     buttonStartEl.textContent = 'Start';
-    buttonStartEl.setAttribute('disabled', '');
+    disableStartButton();
 
     buttonStartEl.removeEventListener('click', onResetButtonClick);
   } catch (error) {
