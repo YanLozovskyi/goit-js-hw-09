@@ -16,3 +16,22 @@ img {
   display: block;
   max-width: 100%;
 }
+
+button[data-start] {
+  font-size: 25px;
+}
+
+div.timer {
+  display: flex;
+  gap: 12px;
+  margin-top: 25px;
+}
+
+span.value {
+  display: flex;
+  font-size: 30px;
+}
+
+span.label {
+  text-transform: uppercase;
+}
