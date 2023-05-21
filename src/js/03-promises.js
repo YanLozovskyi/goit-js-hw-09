@@ -24,14 +24,15 @@ function onFormSubmit(e) {
   e.preventDefault();
 
   refs.buttonEl.setAttribute('disabled', '');
-    const {
-      elements: { delay, step, amount },
-    } = e.currentTarget;
+  const {
+    elements: { 'user-name': userNameInput, delay, step, amount },
+  } = e.currentTarget;
 
-//   const delay = refs.formEl.elements.delay;
-//   const step = refs.formEl.elements.step;
-//   const amount = refs.formEl.elements.amount;
+  //   const delay = refs.formEl.elements.delay;
+  //   const step = refs.formEl.elements.step;
+  //   const amount = refs.formEl.elements.amount;
 
+  const userName = userNameInput.value;
   const delayValue = Number(delay.value);
   const stepValue = Number(step.value);
   const amountValue = Number(amount.value);
@@ -43,13 +44,13 @@ function onFormSubmit(e) {
     createPromise(promiseCount, promiseDelay)
       .then(({ position, delay }) => {
         Notiflix.Notify.success(
-          `✅ Fulfilled promise ${position} in ${delay}ms`,
+          `Hi ${userName}, ✅ Fulfilled promise ${position} in ${delay}ms`,
           { clickToClose: true }
         );
       })
       .catch(({ position, delay }) => {
         Notiflix.Notify.failure(
-          `❌ Rejected promise ${position} in ${delay}ms`,
+          `Hi ${userName} , ❌ Rejected promise ${position} in ${delay}ms`,
           { clickToClose: true }
         );
       })
