@@ -3,9 +3,28 @@ import Notiflix from 'notiflix';
 const refs = {
   formEl: document.querySelector('.form'),
   buttonEl: document.querySelector('button'),
+  inputNameEl: document.querySelector('input[type="text"]'),
 };
 
 refs.formEl.addEventListener('submit', onFormSubmit);
+refs.inputNameEl.addEventListener('focus', onFocusName);
+refs.inputNameEl.addEventListener('blur', onBlurName);
+
+setPlaceholder();
+
+function onFocusName() {
+  refs.inputNameEl.value = '';
+}
+
+function onBlurName() {
+  if (refs.inputNameEl.value === '') {
+    refs.inputNameEl.value = 'Anonymous';
+  }
+}
+
+function setPlaceholder() {
+  refs.inputNameEl.value = 'Anonymous';
+}
 
 function createPromise(position, delay) {
   return new Promise((resolve, reject) => {
@@ -57,6 +76,7 @@ function onFormSubmit(e) {
       .finally(() => {
         refs.buttonEl.removeAttribute('disabled');
         refs.formEl.reset();
+        setPlaceholder();
       });
     promiseDelay += stepValue;
     promiseCount += 1;
