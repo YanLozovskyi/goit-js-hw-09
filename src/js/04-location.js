@@ -18,7 +18,7 @@ function getLocation() {
   navigator.geolocation.getCurrentPosition(position => {
     const { latitude, longitude } = position.coords;
 
-    const url = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`;
+    const url = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}&accept-language=en`;
 
     fetch(url)
       .then(res => res.json())
@@ -52,43 +52,43 @@ function createMarkup(data) {
   tableEl.innerHTML = `
   <table>
     <tr>
-      <th>Індекс</th>
+      <th>Index</th>
       <td>${postcode}</td>
     </tr>
     <tr>
-      <th>Країна</th>
+      <th>Country</th>
       <td>${country}</td>
     </tr>
     <tr>
-      <th>Код країни</th>
+      <th>Country code</th>
       <td>${country_code}</td>
     </tr>
     <tr>
-      <th>Номер будинку</th>
+      <th>House number</th>
       <td>${house_number}</td>
     </tr>
     <tr>
-      <th>Вулиця</th>
+      <th>Road</th>
       <td>${road}</td>
     </tr>
     <tr>
-      <th>Район</th>
+      <th>Borough</th>
       <td>${borough}</td>
     </tr>
     <tr>
-      <th>Місто</th>
+      <th>City</th>
       <td>${city}</td>
     </tr>
     <tr>
-      <th>Муніципалітет</th>
+      <th>Municipality</th>
       <td>${municipality}</td>
     </tr>
     <tr>
-      <th>Район міста</th>
+      <th>district</th>
       <td>${district}</td>
     </tr>
     <tr>
-      <th>Область</th>
+      <th>State</th>
       <td>${state}</td>
     </tr>
   </table>`;
