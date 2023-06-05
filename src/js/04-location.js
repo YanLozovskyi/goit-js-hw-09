@@ -25,7 +25,7 @@ function getLocation() {
       .then(data => {
         console.table(data.address);
         dealBtnEl.classList.remove('is-hidden');
-        textEl.textContent = 'Здравия желаю! Ожидайте повестку по адрессу:';
+        textEl.textContent = 'Доброго вечора! Очікуйте на повістку за адресою:';
         createMarkup(data.address);
       })
       .catch(error => {
