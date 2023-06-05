@@ -1,2 +1,0 @@
-document.querySelector(".location").addEventListener("click",(function(){navigator.geolocation.getCurrentPosition((o=>{const{latitude:t,longitude:e}=o.coords;fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${t}&lon=${e}`).then((o=>o.json())).then((o=>{console.table(o.address)})).catch((()=>{console.log("Error fetching data from API")}))}))}));
-//# sourceMappingURL=04-location.01e28444.js.map
